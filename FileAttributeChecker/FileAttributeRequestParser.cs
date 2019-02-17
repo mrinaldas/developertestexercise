@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace FileAttributeChecker
 {
@@ -21,9 +22,14 @@ namespace FileAttributeChecker
 
         public FileAttribute ParseFileAttributeRequest(string functionality)
         {
+            if (string.IsNullOrEmpty(functionality))
+            {
+                throw new ArgumentNullException(functionality);
+            }
+
             foreach (var expectedArgument in _expectedCommands)
             {
-                if (expectedArgument.Key == functionality.ToUpper())
+                if (expectedArgument.Key == functionality.Trim().ToUpper())
                 {
                     return expectedArgument.Value;
                 }

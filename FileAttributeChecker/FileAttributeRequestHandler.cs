@@ -16,11 +16,6 @@ namespace FileAttributeChecker
 
         public string GetFileAttribute(string attributeRequest, string filePath)
         {
-            if (string.IsNullOrEmpty(attributeRequest))
-            {
-                throw new ArgumentNullException(attributeRequest);
-            }
-
             if (string.IsNullOrEmpty(filePath))
             {
                 throw new ArgumentNullException(filePath);

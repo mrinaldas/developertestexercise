@@ -14,6 +14,8 @@ namespace FileData.Tests
     [TestFixture("--v", FileAttribute.Version)]
     [TestFixture("/v", FileAttribute.Version)]
     [TestFixture("--version", FileAttribute.Version)]
+    [TestFixture("--versionn", FileAttribute.Unknown)]
+    [TestFixture("--siz", FileAttribute.Unknown)]
     public class FileAttributeRequestParserTests
     {
         private readonly string _attributeRequest;
