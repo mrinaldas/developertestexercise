@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FileAttributeChecker
 {
@@ -27,15 +28,8 @@ namespace FileAttributeChecker
                 throw new ArgumentNullException(functionality);
             }
 
-            foreach (var expectedArgument in _expectedCommands)
-            {
-                if (expectedArgument.Key == functionality.Trim().ToUpper())
-                {
-                    return expectedArgument.Value;
-                }
-            }
-
-            return FileAttribute.Unknown;
+            var command = functionality.Trim().ToUpper();
+            return _expectedCommands.ContainsKey(command) ? _expectedCommands[command] : FileAttribute.Unknown;
         }
     }
 }
